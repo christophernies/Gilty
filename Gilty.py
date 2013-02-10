@@ -5,11 +5,6 @@ try:
 except ImportError:
 	import simplejson as json
 
-gilt_url_base = 'https://api.gilt.com/v1'
-gilt_api_key = ''
-
-http = httplib2.Http()
-
 def GiltUpcomingSales(store, gilt_api_key):
 	if store != '':
 		url = '/sales/' + store + '/upcoming.json?apikey=' + gilt_api_key
@@ -17,36 +12,36 @@ def GiltUpcomingSales(store, gilt_api_key):
 		url = '/sales/upcoming.json&apikey=' + gilt_api_key
 	print url
 	headers = {}
-	body = {}
+	body = ""
 	response, content = http.request(gilt_url_base+url, 'GET', headers=headers, body=body)
-	print str(response) + '\t' + str(content)
+	return content
 
 def GiltSaleDetail(store, sale_key, gilt_api_key):
 	if store != '':
 		url = '/sales/' + store + '/' + sale_key + 'detail.json?apikey=' + gilt_api_key
 	print url
 	headers = {}
-	body = {}
+	body = ""
 	response, content = http.request(gilt_url_base+url, 'GET', headers=headers, body=body)
-	print str(response) + '\t' + str(content)
+	return content
 	
 def GiltProductDetail(product_id, gilt_api_key):
 	if store != '':
 		url = '/products/' + product_id + '/detail.json?apikey=' + gilt_api_key
 	print url
 	headers = {}
-	body = {}
+	body = ""
 	response, content = http.request(gilt_url_base+url, 'GET', headers=headers, body=body)
-	print str(response) + '\t' + str(content)
+	return content
 	
 def GiltProductDetail(gilt_api_key):
 	if store != '':
 		url = '/products/categories.json?apikey=' + gilt_api_key
 	print url
 	headers = {}
-	body = {}
+	body = ""
 	response, content = http.request(gilt_url_base+url, 'GET', headers=headers, body=body)
-	print str(response) + '\t' + str(content)
+	return content
 
 def GiltActiveSales(store, gilt_api_key):
 	if store != '':
@@ -55,9 +50,6 @@ def GiltActiveSales(store, gilt_api_key):
 		url = '/sales/active.json&apikey=' + gilt_api_key
 	print url
 	headers = {}
-	body = {}
+	body = ""
 	response, content = http.request(gilt_url_base+url, 'GET', headers=headers, body=body)
-	print str(response) + '\t' + str(content)
-
-# store = 'men'
-# GiltActiveSales(store, gilt_api_key)
+	return content
